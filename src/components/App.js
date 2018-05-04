@@ -49,10 +49,11 @@ class App extends Component {
       ).then(({response: {venues}}) => {
         const locations = this.state.locations
         this.setState({
+          loading: false,
           locations: locations.concat(venues),
           filtered: locations.concat(venues)
-        })
-      }).finally(() => this.setState({loading: false}))
+        }).catch(() => this.setState({loading: false}))
+      })
     })
   }
 

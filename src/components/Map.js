@@ -6,6 +6,7 @@ const Map = ({center, locations, clickedItem, onMarkerClick}) => {
   // Using react-google-maps googlemap component to render google map
   return (
     <GoogleMap
+      onError={(event) => console.log(event)}
       defaultZoom={5}
       center={center}>
       {locations.map((mark, index) => {
@@ -24,7 +25,7 @@ const Map = ({center, locations, clickedItem, onMarkerClick}) => {
 
 export default compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAaHBe5orHGa0wuVbXKVJboYJzRk9CNMgY&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAaHBe5orHGa0wuVbXKVJboYJzRk9CNMgY&v=3.exp&libraries=places",
     loadingElement: <div style={{height: `100%`}}/>,
     containerElement: <div style={{height: `100%`}}/>,
     mapElement: <div style={{height: `100%`}}/>,
