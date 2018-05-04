@@ -16,7 +16,22 @@ git clone https://github.com/Sh4reef/fend-neighborhood-map-react.git
 cd fend-neighborhood-map-react
 npm install --save
 ```
-* After the dependencies has been installed start the application.
+### Run application
+After the dependencies has been installed start the application.
+- Run in development mode
 ```bash
 npm start
+```
+___
+- Run in production mode
+```bash
+npm run build
+```
+* Install `serve` package to serve your app in production mode
+```bash
+npm install -g serve
+```
+* After installed successfully
+```bash
+serve -s build
 ```

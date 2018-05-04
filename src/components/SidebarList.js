@@ -15,6 +15,12 @@ class SidebarList extends React.Component {
     this.props.onItemClick(name)
   }
 
+  handleKeyPress = (e, locationId) => {
+    if (e.charCode === 13 || 32) {
+      this.props.onItemClick(locationId)
+    }
+  }
+
   render() {
     const {activeItem} = this.state
     return (
@@ -26,13 +32,15 @@ class SidebarList extends React.Component {
           return (
             <Menu.Item
               key={index}
+              tabIndex='0'
               className='sidebar-item'
               name={loc.id}
               active={activeItem === loc.id}
               onMouseEnter={(event) => this.props.onMouseEnter(event, {
                 lat: loc.location.lat,
                 lng: loc.location.lng
-              })}
+              }, loc.id)}
+              onKeyPress={(e) => this.handleKeyPress(e, loc.id)}
               onClick={this.handleItemClick}
             >
               <Header color='grey' as='h4'><Icon name={'marker'}/>{loc.name}</Header>

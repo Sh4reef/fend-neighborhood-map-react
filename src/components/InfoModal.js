@@ -1,32 +1,38 @@
 import React from 'react'
-import {Modal, Image, Button, Header, Divider} from 'semantic-ui-react'
+import {Button, Header, Divider, Segment, Item} from 'semantic-ui-react'
+import AriaModal from 'react-aria-modal'
 
-const InfoModal = ({location, dimmer, open, closeModal}) => {
+const InfoModal = ({location, dimmer, open, closeModal, modalActive, activateModal, deactivateModal, getApplicationNode}) => {
+
   const getPhotoUrl = () => {
     const photo = location.photos.items[0]
     const photoUrl = `${photo.prefix}${photo.width}x${photo.height}${photo.suffix}`
     return photoUrl
   }
   return (
-    <Modal dimmer={dimmer} open={open} className={'info-modal'}>
-      <Modal.Header>{location.name}</Modal.Header>
-      <Modal.Content image>
-        {location.photos && <Image wrapped size={'medium'} src={getPhotoUrl()} alt={location.name}/>}
-        {location.location &&
-        <Modal.Description>
-          <Header>Location:</Header>
-          <p><strong>Address: </strong>{location.location.address}</p>
-          <p><strong>City: </strong>{location.location.city}</p>
-          <p><strong>Country: </strong>{location.location.country}</p>
-          <Divider/>
-        </Modal.Description>}
-      </Modal.Content>
-      <Modal.Actions>
-        <Button color={'grey'} onClick={closeModal}>
-          Close
-        </Button>
-      </Modal.Actions>
-    </Modal>
+    modalActive ? <AriaModal titleText="demo one"
+               onExit={deactivateModal}
+               getApplicationNode={getApplicationNode}>
+      <Segment id="demo-one-modal" className="info-modal">
+        <Item.Group>
+          <Item>
+            {location.photos && <Item.Image size={'medium'} src={getPhotoUrl()} alt={location.name}/>}
+            <Item.Content >
+              <Item.Header as={'h1'}>{location.name}</Item.Header>
+              <Divider/>
+              <Item.Description>
+                <Header>Location:</Header>
+                <p><strong>Address: </strong>{location.location.address}</p>
+                <p><strong>City: </strong>{location.location.city}</p>
+                <p><strong>Country: </strong>{location.location.country}</p>
+                <Divider/>
+                <Button autoFocus onClick={deactivateModal}>Close</Button>
+              </Item.Description>
+            </Item.Content>
+          </Item>
+        </Item.Group>
+      </Segment>
+    </AriaModal> : false
   )
 }
 
