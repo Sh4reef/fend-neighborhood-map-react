@@ -1,0 +1,40 @@
+/*.sidebar-toggler {*/
+    /*margin-left: auto;*/
+    /**/
+/*}*/
+
+/*.ui.icon.menu .item {*/
+    /*text-align: left;*/
+/*}*/
+
+.ui.segment .custom-segment {
+    margin-bottom: 0;
+}
+
+.sidebar-pusher {
+    height: 100%;
+}
+
+.sidebar-toggler {
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    z-index: 2000;
+}
+
+.ui.icon.menu .sidebar-item {
+    text-align: left;
+}
+
+.info-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media screen and (min-width: 1024px) {
+    .sidebar-pusher {
+        margin-left: 350px;
+    }
+}
