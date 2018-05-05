@@ -52,8 +52,8 @@ class App extends Component {
           loading: false,
           locations: locations.concat(venues),
           filtered: locations.concat(venues)
-        }).catch(() => this.setState({loading: false}))
-      })
+        })
+      }).catch(() => this.setState({loading: false}))
     })
   }
 
